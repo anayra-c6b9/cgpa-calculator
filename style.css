@@ -49,7 +49,6 @@ label {
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 1rem;
-    background-color: transparent;
 }
 
 .btn {
@@ -77,5 +76,7 @@ input::-webkit-inner-spin-button {
 input[type=number]{
     -moz-appearance: textfield;
 }
-
+input:disabled {
+    background-color: transparent;
+}
 
