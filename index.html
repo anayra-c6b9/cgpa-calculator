@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+        <div class="title">
+            CGPA CALCULATOR
+        </div>
+        <div>
+            <label for="sgpa1">Enter SGPA 1 mark:</label>
+            <input type="number" id="sgpa1">
+            <div id="error11" class="er">Cannot enter SGPA lower than 0</div>
+            <div id="error12" class="er">Cannot enter SGPA greater than 10</div>
+            <div id="error13" class="er">Enter a number</div>
+        </div>
+        <div>
+            <label for="sgpa2">Enter SGPA 2 mark:</label>
+            <input type="number" id="sgpa2">
+            <div id="error21" class="er">Cannot enter SGPA lower than 0</div>
+            <div id="error22" class="er">Cannot enter SGPA greater than 10</div>
+            <div id="error23" class="er">Enter a number</div>
+        </div>
+        <div>
+            <label for="sgpa3">Enter SGPA 3 mark:</label>
+            <input type="number" id="sgpa3">
+            <div id="error31" class="er">Cannot enter SGPA lower than 0</div>
+            <div id="error32" class="er">Cannot enter SGPA greater than 10</div>
+            <div id="error33" class="er">Enter a number</div>
+        </div>
+        <div>
+            <label for="sgpa4">Enter SGPA 4 mark:</label>
+            <input type="number" id="sgpa4">
+            <div id="error41" class="er">Cannot enter SGPA lower than 0</div>
+            <div id="error42" class="er">Cannot enter SGPA greater than 10</div>
+            <div id="error43" class="er">Enter a number</div>
+        </div>
+        <div>
+            <label for="sgpa5">Enter SGPA 5 mark:</label>
+            <input type="number" id="sgpa5">
+            <div id="error51" class="er">Cannot enter SGPA lower than 0</div>
+            <div id="error52" class="er">Cannot enter SGPA greater than 10</div>
+            <div id="error53" class="er">Enter a number</div>
+        </div>
+        <div>
+            <label for="sgpa1">Your total CGPA:</label>
+            <input type="number" id="cgpa">
+        </div>
+        <button type="button" onclick="calculate()" class="btn">Calculate</button>
+    </form>
+</body>
+<script>
+    function calculate(){
+        function multiple(arr) {
+            let mul = 1;
+
+            for(let i = 0; i < arr.length; i++){
+                mul *= arr[i];
+            }
+
+            return mul.toFixed(2);
+        }
+
+        function calculateCGPA(arr1, arr2) {
+            let sum = 0;
+
+            for(let i = 0; i < arr1.length; i++){
+                sum += arr1[i]*arr2[i];
+            }
+
+            return sum.toFixed(2);
+        }
+
+        const ids = ["sgpa1", "sgpa2", "sgpa3", "sgpa4", "sgpa5"];
+        const parent1 = ["error11", "error21", "error31", "error41", "error51"];
+        const parent2 = ["error12", "error22", "error32", "error42", "error52"];
+        const parent3 = ["error13", "error23", "error33", "error43", "error53"];
+
+        let vals = new Array(5).fill()
+
+        const result = document.getElementById("cgpa")
+        result.value = "";
+
+        for(let i = 0; i < 5; i++){
+            document.getElementById(parent1[i]).style.display = "none";
+            document.getElementById(parent2[i]).style.display = "none";
+            document.getElementById(parent3[i]).style.display = "none";
+        }
+
+        let flag = false; 
+
+        for(let i = 0; i < 5; i++){
+            const sgpaValue = document.getElementById(ids[i]).value.trim();
+            if(!Number(sgpaValue) && Number(sgpaValue) !== 0){
+                flag = true;
+                document.getElementById(parent3[i]).style.display = "block";
+            } else if(Number(sgpaValue) <= 0){
+                flag = true;
+                document.getElementById(parent1[i]).style.display = "block";
+            } else if(Number(sgpaValue) > 10){
+                flag = true;
+                document.getElementById(parent2[i]).style.display = "block";
+            }
+
+            if(!flag){
+                vals[i] = Number(sgpaValue).toFixed(2);
+            }
+        }
+
+        if(flag){
+            // alert("Retry! You have entered the wrong parameters")
+        }
+
+        if(!flag){
+            //p = x1*x2*x3*x4*x5
+            //Min{p, (x1*20+x2*20+x3*26+x4*26+x5*24)/116}
+            const p = multiple(vals);
+            const crRes = calculateCGPA(vals, [20, 20, 26, 26, 24]);
+            
+            result.value = (Math.min(p, (crRes/116).toFixed(2)));
+        }
+
+    }
+</script>
+</html>
