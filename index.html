@@ -12,35 +12,35 @@
             CGPA CALCULATOR
         </div>
         <div>
-            <label for="sgpa1">Enter SGPA 1 mark:</label>
+            <label for="sgpa1">Enter Semester 1 SGPA:</label>
             <input type="number" id="sgpa1">
             <div id="error11" class="er">Cannot enter SGPA lower than 0</div>
             <div id="error12" class="er">Cannot enter SGPA greater than 10</div>
             <div id="error13" class="er">Enter a number</div>
         </div>
         <div>
-            <label for="sgpa2">Enter SGPA 2 mark:</label>
+            <label for="sgpa2">Enter Semester 2 SGPA:</label>
             <input type="number" id="sgpa2">
             <div id="error21" class="er">Cannot enter SGPA lower than 0</div>
             <div id="error22" class="er">Cannot enter SGPA greater than 10</div>
             <div id="error23" class="er">Enter a number</div>
         </div>
         <div>
-            <label for="sgpa3">Enter SGPA 3 mark:</label>
+            <label for="sgpa3">Enter Semester 3 SGPA:</label>
             <input type="number" id="sgpa3">
             <div id="error31" class="er">Cannot enter SGPA lower than 0</div>
             <div id="error32" class="er">Cannot enter SGPA greater than 10</div>
             <div id="error33" class="er">Enter a number</div>
         </div>
         <div>
-            <label for="sgpa4">Enter SGPA 4 mark:</label>
+            <label for="sgpa4">Enter Semester 4 SGPA:</label>
             <input type="number" id="sgpa4">
             <div id="error41" class="er">Cannot enter SGPA lower than 0</div>
             <div id="error42" class="er">Cannot enter SGPA greater than 10</div>
             <div id="error43" class="er">Enter a number</div>
         </div>
         <div>
-            <label for="sgpa5">Enter SGPA 5 mark:</label>
+            <label for="sgpa5">Enter Semester 5 SGPA:</label>
             <input type="number" id="sgpa5">
             <div id="error51" class="er">Cannot enter SGPA lower than 0</div>
             <div id="error52" class="er">Cannot enter SGPA greater than 10</div>
@@ -98,7 +98,7 @@
             if(!Number(sgpaValue) && Number(sgpaValue) !== 0){
                 flag = true;
                 document.getElementById(parent3[i]).style.display = "block";
-            } else if(Number(sgpaValue) <= 0){
+            } else if(Number(sgpaValue) < 0){
                 flag = true;
                 document.getElementById(parent1[i]).style.display = "block";
             } else if(Number(sgpaValue) > 10){
